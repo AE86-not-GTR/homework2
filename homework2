@@ -1,0 +1,45 @@
+#pragma warning(disable:4996)
+#include<stdio.h>
+#include<stdlib.h>
+int max(int a[], int len)
+{
+	int nowsum;
+	int maxsum = 0;
+	
+	int i, j;
+
+	for (i = 0; i < len; i++)
+	{
+		nowsum = 0;
+
+		for (j = i; j < len; j++)
+		{
+			nowsum += a[j];
+			if (nowsum > maxsum)
+				maxsum = nowsum;
+		}
+	}
+	return maxsum;
+}
+int main()
+{
+	int flag = 0;
+	int leng; 
+	scanf("%d", &leng);
+	int shu[30];
+	for (int i = 0; i < leng; i++)
+	{
+		scanf("%d", &shu[i]);
+		if (shu[i] < 0)flag++;
+	}
+	if (flag == leng)
+	{
+		printf("0");
+	}
+	else
+	{
+		printf("%d", max(shu, leng));
+	}
+    system("pause");
+	return 0;
+}
